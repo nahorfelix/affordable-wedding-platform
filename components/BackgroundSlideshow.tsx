@@ -78,7 +78,7 @@ function BackgroundSlideshowComponent() {
 
     const img = new Image()
     img.onload = () => {
-      setLoadedImages(prev => new Set([...prev, index]))
+      setLoadedImages(prev => new Set(Array.from(prev).concat(index)))
     }
     img.onerror = () => {
       console.warn(`Failed to load image at index ${index}`)
