@@ -1,0 +1,92 @@
+/* Sparkle and shimmer animations for Love aesthetic */
+
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0; 
+    transform: scale(0) rotate(0deg);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.3), 0 0 40px rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(233, 30, 99, 0.5), 0 0 60px rgba(212, 175, 55, 0.3);
+  }
+}
+
+.sparkle-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.sparkle-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+.sparkle-button::after {
+  content: '✨';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: sparkle 2s infinite;
+  pointer-events: none;
+}
+
+.love-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.floating-sparkles {
+  position: relative;
+}
+
+.floating-sparkles::before,
+.floating-sparkles::after {
+  content: '✨';
+  position: absolute;
+  color: #d4af37;
+  font-size: 1rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.floating-sparkles::before {
+  top: -10px;
+  left: -10px;
+  animation: sparkle 3s infinite;
+}
+
+.floating-sparkles::after {
+  bottom: -10px;
+  right: -10px;
+  animation: sparkle 3s infinite 1.5s;
+}
