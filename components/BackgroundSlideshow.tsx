@@ -83,7 +83,7 @@ function BackgroundSlideshowComponent() {
     img.onerror = () => {
       console.warn(`Failed to load image at index ${index}`)
       // Still mark as "loaded" to prevent infinite retries
-      setLoadedImages(prev => new Set([...prev, index]))
+      setLoadedImages(prev => new Set(Array.from(prev).concat(index)))
     }
     img.src = weddingImages[index].url
   }, [loadedImages])
