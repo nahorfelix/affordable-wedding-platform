@@ -177,8 +177,8 @@ function BackgroundSlideshowComponent() {
             alt=""
             loading={image.preload ? "eager" : "lazy"}
             style={{ display: 'none' }}
-            onLoad={() => setLoadedImages(prev => new Set([...prev, index]))}
-            onError={() => setLoadedImages(prev => new Set([...prev, index]))}
+            onLoad={() => setLoadedImages(prev => new Set(Array.from(prev).concat(index)))}
+            onError={() => setLoadedImages(prev => new Set(Array.from(prev).concat(index)))}
           />
         ))}
       </div>
